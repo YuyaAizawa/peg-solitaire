@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+}
+
+body {
+	font-family: 'Source Sans Pro', 'Helvetica Neue', 'Meiryo', 'Hiragino Sans', sans-serif;
+	color: #000E16;
+}
+
+#center {
+	width: 920px;
+	margin: 0 auto;
+}
+
+#contents {
+	margin: 1rem 2rem;
+}
+
+h1 {
+	border-bottom: 2px solid #ddd;
+	padding-bottom: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+h2 {
+	margin-bottom: 0.5em;
+}
+
+#elm-area {
+	display: block;
+	margin: 1em auto;
+	background: #eee;
+}
+
+#elm-area .hole {
+	stroke: #000;
+	fill: #eee;
+}
+
+#elm-area .peg {
+	fill: #000;
+}
+
+#elm-area .peg-hold {
+	fill: #fa0;
+}

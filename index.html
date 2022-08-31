@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <title>Peg Solitaire</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="elm.css">
+</head>
+<body>
+  <div id="center"><div id="contents">
+    <h1>Peg Solitaire</h1>
+    <div id="elm-area"><p>Failed to load elm.js</p></div>
+    <h2>How to play</h2>
+    <ul>
+      <li>Drag and drop to move a peg (indicated black circle).</li>
+      <li>Valid move is to jump over an adjacent peg into a hole (indicated empty square).</li>
+      <ul><li>Jumped peg is removed.</li></ul>
+      <li>The goal is to remove all peg except for a solitary peg -- I haven't implemented that judgment yet...</li>
+    </ul>
+    <p>code: <a href="https://github.com/YuyaAizawa/peg-solitaire">github.com/YuyaAizawa/peg-solitaire</a></p>
+  </div></div>
+  <script src="js/elm.js"></script>
+  <script>
+    const app = document.getElementById("elm-area")
+    Elm.Main.init({ node: app });
+  </script>
+</body>
+</html>
