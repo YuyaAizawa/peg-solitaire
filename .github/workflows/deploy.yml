@@ -22,22 +22,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: '16.x'
+          cache: 'npm'
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: node-cache
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
 
       - name: Install dependencies
-        run: |
-          npm install elm --global
-          npm install uglify-js --global
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm ci
 
       - name: Build
-        run: |
-          mkdir ./_site ./_site/js
-          elm make src/Main.elm --optimize --output=./build/optimized.js
-          uglifyjs ./build/optimized.js --output ./build/compressed.js --compress "pure_funcs=[F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9],pure_getters,keep_fargs=false,unsafe_comps,unsafe"
-          uglifyjs ./build/compressed.js --output ./_site/js/elm.js --mangle
-          cp -r -t ./_site ./*.html ./*.css
+        run: npm run build --if-present
 
       - uses: actions/upload-pages-artifact@v1
 
